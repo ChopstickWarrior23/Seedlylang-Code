@@ -1,0 +1,201 @@
+import random
+import time
+from tkinter import *
+import smtplib
+import webbrowser
+
+def println():
+    printlnn = input("What do you want to be said? > ")
+    print(printlnn)
+
+def inputln():
+    inputlnn = input("What do you want to be inputed? > ")
+    outputlnn = input(inputlnn + " > ")
+    print(outputlnn + "!")
+
+def randomfact():
+    facts =["Turtles can breathe from their butts!",
+            "Germany is the size of Montana but has more people!",
+            "Seedly was coded in Python, Python was coded in C!",
+            "Transfering your bank account to a 401k will save some money!",
+            "Alexander Graham Bell made the first working telephone!",
+            "Peanut Butter was made in 1895",
+            "Java was made in 1995!",
+            "Chinese checkers was invented in Germany.",
+            "Peaches are members of the almond family.",
+            "Iceland has a dating app that stops you from hooking up with your cousin."
+            "In parts of Europe people believe that if you light a cigarette from a candle, a sailor will die.",
+            "In 1953, Swanson had 260 tons of frozen turkey leftover after Thanksgiving, so they packaged them into trays with peas and potatoes, and the TV Dinner was born.",
+            "Queen Elizabeth II had over 30 corgis in her lifetime.",
+            "Almost everyone who reads this will try to lick their elbow.",
+            "Canada eats more macaroni and cheese than any other nation in the world.",
+            "In a 2004 episode of Sesame Street, Cookie Monster revealed that before he started eating cookies his name was Sid.",
+            "You don't have to be a lawyer to be a supreme court justice.",
+            "On Scooby-Doo, Shaggy's real name is Norville Rogers.",
+            "There are over 14 THOUSAND islands in Japan, each with their own traits.",
+            "In Switzerland, it is illegal to flush your toilet after 10PM, until dawn.",
+            "In Iceland, you can't have lizards or turtles as pets.",
+            ""]
+    random_fact = random.choice(facts)
+    print(random_fact)
+
+def funtime():
+    jokes =["What do you call Frosty the Snowman in the Spring? A puddle!",
+            "Why did the scarecrow win an award? Because he was outstanding in his field.",
+            "Why did the melon jump into the lake? It wanted to be a water-melon.",
+            "What did the duck say when it bought lipstick? 'Put it on my bill.'",
+            "What do you call a pig that does karate? A pork chop.",
+            "What has a bed that you can't sleep in? A river.",
+            "Why were the teacher's eyes crossed? She couldn't control her pupils.",
+            "Apparently, you can't use “beef stew” as a password. It's not stroganoff.",
+            "Why did the drum take a nap? It was beat.",
+            "If athletes get athlete's foot, what do elves get? Mistle-toes.",
+            "What do you call a cake mixed with a snake? A Pie-Thon!",
+            "Why is Peter Pan always flying? He Neverlands.",
+            "Where do you learn to make banana splits? At sundae school."]
+    random_joke = random.choice(jokes)
+    print(random_joke)
+
+def pickle():
+    print("Pickle.")
+
+def oogabooga():
+    print("How did you get this command?")
+    print("NoGoodNames23 made an oopsie!")
+    print("Well, since you're still here...")
+    input("You ready? > ")
+    print("(I don't care for your opinion)")
+    print("OOOOOGAAAAA BOOOOOGAAA")
+
+def timer():
+    timerr = int(input("Enter how long you want your timer to go (in seconds) > "))
+    for x in range(timerr, 0, -1):
+        print(x)
+        time.sleep(1)
+    print("TIME IS UP!")
+
+def createwindow():
+    window = Tk()
+    window.geometry("500x500")
+    window.mainloop()
+
+def sendemail():
+    sender = input("Enter Your Email > ")
+    reciever = input("Enter The Reciever's Email > ")
+    password = "jgfutymwmvqlwdhz"
+    subject = input("What Is Your Subject? > ")
+    body = input("What do you want to say? > ")
+    message = f"""From: {sender}
+    To: {reciever}
+    Subject: {subject}\n
+    {body}
+    """
+    server = smtplib.SMTP("smtp.gmail.com", 587)
+    server.starttls()
+    try:
+        server.login(sender, password)
+        print("Logged In...")
+        server.sendmail(sender, reciever, message)
+        print("Email has been sent!")
+    except smtplib.SMTPAuthenticationError:
+        print("Unable to send email!")
+
+def opengoogle():
+    webbrowser.open("https://www.google.com")
+
+def drawline():
+    window = Tk()
+    window.geometry("500x500")
+    canvas = Canvas(window, height = 500, width = 500)
+    color = input("What Color (red, green, blue, black, yellow, purple)? > ").lower()
+    if color == "red":
+        canvas.create_line(0, 0, 500, 500, fill="red", width = 5)
+        canvas.pack()
+        window.mainloop()
+    elif color == "green":
+        canvas.create_line(0, 0, 500, 500, fill="green", width = 5)
+        canvas.pack()
+        window.mainloop()
+    elif color == "blue":
+        canvas.create_line(0, 0, 500, 500, fill="blue", width = 5)
+        canvas.pack()
+        window.mainloop()
+    elif color == "black":
+        canvas.create_line(0, 0, 500, 500, fill="red", width = 5)
+        canvas.pack()
+        window.mainloop()
+    elif color == "yellow":
+        canvas.create_line(0, 0, 500, 500, fill="yellow", width = 5)
+        canvas.pack()
+        window.mainloop()
+    elif color == "purple":
+        canvas.create_line(0, 0, 500, 500, fill="purple", width = 5)
+        canvas.pack()
+        window.mainloop()
+    else:
+        print("Color not found!")
+
+def openinbox():
+    webbrowser.open("https://mail.google.com")
+
+def opentt():
+    webbrowser.open("https://www.google.com")
+    webbrowser.open("https://www.bing.com")
+
+def main():
+    while True:
+        main = input("seedly (Use cmd: HELP for a list of commands!) > ").lower()
+        if main == "system.print":
+            println()
+        elif main == "system.input":
+            inputln()
+        elif main == "help":
+            print("Here are a few commands you can use for seedly!")
+            print("system.print")
+            print("Prints new lines")
+            print("system.input")
+            print("Creates basic user input.")
+            print("system.randomfact")
+            print("Gives a random fact from a typed list.")
+            print("system.joke")
+            print("Gives you a fun time")
+            print("system.createtimer")
+            print("Makes a timer")
+            print("system.sendemail")
+            print("Sends emails")
+            print("system.createwindow")
+            print("Creates a Tkinter 500x500 pixel window")
+            print("system.opengoogle")
+            print("Opens the best search browser!")
+            print("system.drawline")
+            print("Creates a tkinter canvas that draws a diagonal 500x500 line.")
+            print("system.openinbox")
+            print("Opens your Gmail Inbox Account")
+        elif main == "system.close()":
+            print("SEEDLYlang exited with code 0!")
+            break
+        elif main == "system.randomfact":
+            randomfact()
+        elif main == "system.joke":
+            funtime()
+        elif main == "system.pickle":
+            pickle()
+        elif main == "system.boogah":
+            oogabooga()
+        elif main == "system.createtimer":
+            timer()
+        elif main == "system.sendemail":
+            sendemail()
+        elif main == "system.createwindow":
+            createwindow()
+        elif main == "system.opengoogle":
+            opengoogle()
+        elif main == "system.drawline":
+            drawline()
+        elif main == "system.openinbox":
+            openinbox()
+        elif main == "system.opentt":
+            opentt()
+        else:
+            print("Invalid Command!")
+main()
